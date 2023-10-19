@@ -60,14 +60,18 @@ import { getSingleImageDataIUrl } from '../url'
                 })
                 :<Text>No images with text saved yet</Text>
              }
-              {isLoading&&  <Spinner
+           {isLoading&&   <Spinner
+              zIndex={'overlay'}
+              position={"absolute"}
+              top={"50%"}
+              left={'16'}
   thickness='4px'
   speed='0.65s'
   emptyColor='gray.200'
   color='blue.500'
   size='xl'
-/>}
-            </DrawerBody>
+/>
+        }      </DrawerBody>
           
             <DrawerFooter>
               <Button variant='outline' mr={3} onClick={onClose}>
