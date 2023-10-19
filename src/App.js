@@ -35,7 +35,8 @@ function App() {
     setIsLoading(true)
     const result = await Tesseract.recognize(image);
     setIsLoading(false)
-    setText(result.data.text)
+    if(!result.data.text)setText("null")
+    else setText(result.data.text)
     console.log("Reached here",result)
     
 
