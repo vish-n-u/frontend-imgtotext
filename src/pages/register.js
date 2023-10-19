@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Box,
   Button,
@@ -105,17 +106,16 @@ async function handleSubmits(formData,setFormData,navigate,Toast){
   try{
  console.log("formData: " + formData);
 
-      let registerUser = await fetch(registerUrl,{
-          method: "POST",
+      let registerUser = await axios.post(registerUrl,{
           headers:{"Content-Type": "application/json"},
           mode:"cors",
-          body: JSON.stringify({
+         
               userName:formData.username,
               password:formData.password,
               email:formData.email,
-          })
+          
       })
-      let registerUserJson =await registerUser.json()
+      let registerUserJson = registerUser.data
       if(registerUser.status==400){
           if(registerUserJson.message.email){
               setFormData({...formData,email:""})

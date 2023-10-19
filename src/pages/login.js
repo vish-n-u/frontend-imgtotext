@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Box,
   Button,
@@ -93,16 +94,13 @@ async function handleLogin(formData,setFormData,navigate,Toast){
   try{
  
 
-      let loginUser = await fetch(loginUrl,{
-          method: "POST",
+      let loginUser = await axios.post(loginUrl,{
           headers:{"Content-Type": "application/json"},
           mode:"cors",
-          body: JSON.stringify({            
-              password:formData.password,
-              email:formData.email,             
-          })
+          password: formData.password,
+    email: formData.email,
       })
-      let loginUserJson =await loginUser.json()
+      let loginUserJson =await loginUser.data
       if(loginUser.status==400){
           if(loginUserJson.message.email){
               setFormData({...formData,email:""})
