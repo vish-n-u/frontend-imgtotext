@@ -10,6 +10,10 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+
+console.log = function(){}
+console.error = function(){}
+console.log.warn = function(){}
 const router = createBrowserRouter([
   {
     path: "/",
